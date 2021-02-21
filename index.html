@@ -13,7 +13,7 @@
 
         function playerHand(variantArr) {
             let input = prompt('Choose your hand - rock, paper or scissors?');
-            if(input === SENTINEL) {
+            if(input == SENTINEL) {
                 return SENTINEL;
             }
             if(input !== null) {
@@ -22,7 +22,9 @@
                     console.log(`You choose ${ userChoise }`);
                     console.log(variantArr.indexOf(userChoise));
                     return variantArr.indexOf(userChoise);
-                    } else {
+                }else if(input == SENTINEL){
+                    return SENTINEL;
+                } else {
                         alert('You picked wrong variant of hand or have a typo.');
                         playerHand(variantArr);
                     }
@@ -63,6 +65,10 @@
 
             while(playerScore < winPoints && compScore < winPoints) {
                 let player = playerHand(variantArr);
+                if(player == SENTINEL) {
+                    console.log('Chicken...');
+                    break;
+                }
                 let computer = computerHand(variantArr);
                 roundResult = singleRound(player, computer);
                 switch(roundResult) {
