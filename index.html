@@ -7,33 +7,41 @@
         UI coming soon
     </body>
     <script>
+
+        // Basic set of hand variants in this game
         const handVariants = ['rock', 'paper', 'scissors'];
+
+        // escape value for blayer to break from game at any point
+        // my klicking 'cancel' on prompt pop-up or manually typing SENTINEL value
         const SENTINEL = -1;
 
 
+        //  function to get user input
         function playerHand(variantArr) {
-            let input = prompt('Choose your hand - rock, paper or scissors?');
+            let input;
+            let userChoise;
+            input = prompt('Choose your hand - rock, paper or scissors? Type -1 to break' );
             if(input == SENTINEL) {
-                return SENTINEL;
-            }
-            if(input !== null) {
-                let userChoise = input.toLocaleLowerCase();
-                if (variantArr.includes(userChoise)) {
-                    console.log(`You choose ${ userChoise }`);
-                    console.log(variantArr.indexOf(userChoise));
-                    return variantArr.indexOf(userChoise);
-                }else if(input == SENTINEL){
-                    return SENTINEL;
-                } else {
-                        alert('You picked wrong variant of hand or have a typo.');
-                        playerHand(variantArr);
-                    }
+                userChoise = input;
+            } else {
+                if(input != null) {
+                    userChoise = input.toLocaleLowerCase();
+                    if (variantArr.includes(userChoise)) {
+                        console.log(`You choose ${ userChoise }`);
+                        console.log(variantArr.indexOf(userChoise));
+                        userChoise = variantArr.indexOf(userChoise);
+                    }else{
+                            alert('You picked wrong variant of hand or have a typo.');
+                            playerHand(variantArr);
+                        }
                 }else{
-                    return SENTINEL;
-
-            }
+                    userChoise = SENTINEL;
+                }
+            }    
+            return userChoise;
         }
 
+        // function to generate comp hand variant
         function computerHand(variantArr) {
             let compChoise = Math.floor(Math.random() * Math.floor(variantArr.length));
             console.log(`Computer choose ${ variantArr[compChoise] }`);
@@ -41,6 +49,7 @@
             return compChoise;
         }
 
+        // takes both comp and user inputs and returns one of three possible values
         function singleRound(playerSelection, computerSelection) {
             if (playerSelection === computerSelection) {
                 console.log(` It\'s a tie.`);
@@ -57,6 +66,7 @@
             }
         }
 
+        // plays whole game
         function game (variantArr) {
             let playerScore = 0;
             let compScore = 0;
