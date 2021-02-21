@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+        UI coming soon
+    </body>
+    <script>
+        const handVariants = ['rock', 'paper', 'scissors'];
+        const SENTINEL = -1;
+
+        function computerHand(variantArr) {
+            let compChoise = Math.floor(Math.random() * Math.floor(variantArr.length));
+            console.log(`Computer choose ${ variantArr[compChoise] }`);
+            console.log(compChoise);
+            return compChoise;
+        }
+
+        let computer = computerHand(handVariants);
+        let player = playerHand(handVariants);
+
+        function playerHand(variantArr) {
+            let userChoise = prompt('Hello to a wonderful game of Rock-Paper-Scissors! Choose your hand - rock, paper or scissors?').toLowerCase();
+            if (variantArr.includes(userChoise)) {
+                console.log(`You choose ${ userChoise }`);
+                console.log(variantArr.indexOf(userChoise));
+                return variantArr.indexOf(userChoise);
+            } else {
+                alert('You picked wrong variant of hand or have a typo.')
+            }
+        }
+
+        function singleRound(playerSelection, computerSelection) {
+            if (playerSelection === computerSelection) {
+                console.log(` It\'s a tie.`);
+                return NaN;
+            }else if (playerSelection === 0 && computerSelection === 2){
+                console.log(` You WON!`);
+                return true;
+            } else if (playerSelection > computerSelection){
+                console.log(` You WON!`);
+                return true;
+            }else{
+                console.log(` You lose...`);
+                return false;
+            }
+        }
+
+        singleRound(player, computer);
+
+
+
+    </script>
+</html>
