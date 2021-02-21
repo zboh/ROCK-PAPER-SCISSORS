@@ -11,8 +11,8 @@
         // Basic set of hand variants in this game
         const handVariants = ['rock', 'paper', 'scissors'];
 
-        // escape value for blayer to break from game at any point
-        // my klicking 'cancel' on prompt pop-up or manually typing SENTINEL value
+        // escape value for player to break from game at any point
+        // by clicking 'cancel' on prompt pop-up, or manually typing SENTINEL value
         const SENTINEL = -1;
 
 
@@ -21,22 +21,18 @@
             let input;
             let userChoise;
             input = prompt('Choose your hand - rock, paper or scissors? Type -1 to break' );
-            if(input == SENTINEL) {
-                userChoise = input;
-            } else {
-                if(input != null) {
-                    userChoise = input.toLocaleLowerCase();
-                    if (variantArr.includes(userChoise)) {
-                        console.log(`You choose ${ userChoise }`);
-                        console.log(variantArr.indexOf(userChoise));
-                        userChoise = variantArr.indexOf(userChoise);
-                    }else{
-                            alert('You picked wrong variant of hand or have a typo.');
-                            playerHand(variantArr);
-                        }
+            if(input == SENTINEL || input == null) {
+                userChoise = SENTINEL;
+            } else {   
+                if (variantArr.includes(input.toLocaleLowerCase())) {
+                    userChoise = variantArr.indexOf(input.toLocaleLowerCase());
+                    console.log(`You choose ${ input }`);
+                    console.log(userChoise);                
                 }else{
-                    userChoise = SENTINEL;
+                    alert('You picked wrong variant of hand or have a typo.');
+                    playerHand(variantArr);
                 }
+                
             }    
             return userChoise;
         }
@@ -104,8 +100,6 @@
         }
 
         game(handVariants);
-
-
 
     </script>
 </html>
