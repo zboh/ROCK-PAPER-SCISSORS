@@ -1,0 +1,42 @@
+/* reset */ 
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Press Start 2P', cursive, sans-serif;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+  }
+  
+  ol, ul {
+    list-style: none;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* END of reset */
+p {
+    font-family: 'Press Start 2P', cursive, sans-serif;
+}
+
+body {
+    background: url('./img/10981844.jpg') no-repeat bottom center;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: khaki;
+    text-shadow: lavender 0 0 2px;
+}
+
