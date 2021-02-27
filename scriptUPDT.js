@@ -36,6 +36,15 @@ handsWrapper.classList.add('row', 'd-flex', 'justify-content-center', 'align-ite
 handsWrapper.appendChild(playerSide);
 handsWrapper.appendChild(machineSide);
 
+// hand variants
+// function to create hand variant
+function hand(imgSource, name) {
+    const handVariant = document.createElement('a');
+    handVariant.classList.add('chooseHand');
+    handVariant.setAttribute('href', '#');
+    
+}
+
 
 
 

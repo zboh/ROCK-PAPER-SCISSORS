@@ -28,7 +28,7 @@ html {
   /* END of reset */
 
 body {
-    /* background: url('./img/10981844.jpg') no-repeat bottom center; */
+    background: url('./img/10981844.jpg') no-repeat bottom center;
     background-size: cover;
     min-height: 100vh;
     margin: 0;
@@ -61,7 +61,6 @@ body {
     z-index: 0;
     border-radius: 10px;
     padding: 1rem;
-    padding-left: 2rem;
 }
 
 .glow-on-hover:before {
@@ -118,4 +117,44 @@ body {
     height: 80vh;
 }
 
+/* .playerSide, 
+.machineSide,
+.score {
+    padding-left: 15vw;
+} */
+
+/* @media only screen and (max-width: 991px) {
+     {padding-left: 15vw;}
+    .score{text-align: center;}
+} */
+
+.handChoise {
+    min-width: 130px;
+    width: 180px;
+    font-size: 1rem;
+    margin: 0.4rem;
+}
+
+
+.whoWon {
+    width: 50vw;
+    height: 50;
+    font-size: 2rem;
+    padding: 2vh;
+    text-shadow: 3px 3px 10px #e0ff99,
+    -2px 1px 10px #ff99cc;
+}
+
+.compHand {
+    min-height: 200px;
+}
+
+.compText {
+    align-self: flex-end;
+}
+
+.score {
+    text-shadow: 3px 4px 10px red;
+    font-size: 1.3rem;
+}
 /* END playing window */
