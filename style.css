@@ -28,7 +28,7 @@ html {
   /* END of reset */
 
 body {
-    background: url('./img/10981844.jpg') no-repeat bottom center;
+    /* background: url('./img/10981844.jpg') no-repeat bottom center; */
     background-size: cover;
     min-height: 100vh;
     margin: 0;
@@ -111,3 +111,11 @@ body {
     100% { background-position: 0 0; }
 }
 
+/* END game init window */
+
+/* START playing window */
+.handsWrapper {
+    height: 80vh;
+}
+
+/* END playing window */
