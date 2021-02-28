@@ -123,7 +123,7 @@ function game() {
         // adds event listeners to player cards to trigger machine choice
         const userChoise = document.querySelectorAll('.playerCard');
         userChoise.forEach((card) => {
-            console.log(card);
+            let userChoiseIndex;
             card.addEventListener('click', () => {
                 let randomizer = computerHand(handVariants);
                 let machineCard = document.querySelector('.machineCard img');
@@ -131,11 +131,12 @@ function game() {
                 console.log(machineCard);
                 machineCard.setAttribute('src', `./img/${handVariants[randomizer]}.png`);
                 machineText.innerText = `${handVariants[randomizer]}`;
-                
-
+                console.log(machineSide);
+                userChoiseIndex = handVariants.indexOf(machineSide);
+                console.log(userChoiseIndex);
             })
         });
-        
+
         
     })
     
