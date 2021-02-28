@@ -45,6 +45,13 @@ body {
     background-color: khaki;
     border: #a59f66 2px solid;
     border-radius: 3px;
+    -moz-box-shadow: 0 0 4px khaki;
+    -webkit-box-shadow: 0 0 4px khaki;
+    box-shadow: 0 0 4px khaki;
+}
+
+.playPadding {
+    width: 320px;
 }
 
 .gameInit {
@@ -133,7 +140,7 @@ body {
     width: 180px;
     height: 215px;
     font-size: 1rem;
-    margin: 0.4rem;
+    margin: 0.6rem;
 }
 
 

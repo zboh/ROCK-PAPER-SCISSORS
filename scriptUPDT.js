@@ -1,7 +1,7 @@
 // Basic set of hand variants in this game
 // and global variables
 const handVariants = ['rock', 'paper', 'scissors'];
-const initBtnTxt = 'play!';
+const initBtnTxt = 'Play';
 const initScore = 'You 0 : 0 AI';
 const playArea = document.querySelector('#playArea');
 
@@ -9,7 +9,7 @@ const playArea = document.querySelector('#playArea');
 
 // game init button
 const playBtn = document.createElement('button');
-playBtn.classList.add('glow-on-hover', 'play-btn');
+playBtn.classList.add('glow-on-hover', 'play-btn', 'playPadding');
 playBtn.setAttribute('type', 'button');
 playBtn.textContent = initBtnTxt;
 
@@ -21,7 +21,7 @@ initDiv.classList.add('gameInit', 'd-flex', 'justify-content-center', 'align-ite
 initDiv.appendChild(playBtn);
 
 
-
+///////////////////////////////////////////////////
 // create Header Text
 const header = document.createElement('div');
 header.classList.add('text-center', 'p-4');
@@ -31,7 +31,7 @@ header.innerText = 'Choose your hand!';
 
 // create div to contain player side of hands
 const playerSide = document.createElement('div');
-playerSide.classList.add('d-inline-flex', 'align-items-center', 'justify-content-center', 'flex-wrap');
+playerSide.classList.add('d-flex', 'align-items-center', 'justify-content-center', 'flex-wrap');
 playerSide.setAttribute('id', 'hands');
 // adds three hands
 const rock = hand('./img/rock.png', 'rock');
@@ -48,7 +48,7 @@ playerSide.appendChild(scissors);
 
 // create div to represent single round result
 const roundResult = document.createElement('div');
-roundResult.classList.add('d-inline-flex', 'align-items-center', 'justify-content-center');
+roundResult.classList.add('d-flex', 'align-items-center', 'justify-content-center');
 const whoWon = document.createElement('div');
 whoWon.classList.add('whoWon', 'text-center');
 const result = document.createElement('p');
@@ -68,7 +68,7 @@ function computerHand(variantArr) {
 }
 
 const machineSide = document.createElement('div');
-machineSide.classList.add('d-inline-flex', 'align-items-center', 'justify-content-center');
+machineSide.classList.add('d-flex', 'align-items-center', 'justify-content-center');
 const machineChoise = hand(`./img/question.png`, `waitin...`);
 machineChoise.classList.add('machineCard');
 machineSide.appendChild(machineChoise);
@@ -82,6 +82,14 @@ const scorePar = document.createElement('p');
 scorePar.innerText = initScore;
 score.appendChild(scorePar);
 
+
+// creates wrapper around playing area
+const playDiv = document.createElement('div');
+playDiv.appendChild(header);
+playDiv.appendChild(playerSide);
+playDiv.appendChild(roundResult); 
+playDiv.appendChild(machineSide);
+playDiv.appendChild(score);
 
 
 // hand variants
@@ -114,12 +122,9 @@ function game() {
 
     playArea.appendChild(initDiv);
     playBtn.addEventListener('click', () => {
-        playArea.removeChild(initDiv); 
-        playArea.appendChild(header);
-        playArea.appendChild(playerSide);
-        playArea.appendChild(roundResult); 
-        playArea.appendChild(machineSide);
-        playArea.appendChild(score);
+        initDiv.removeChild(playBtn); 
+        initDiv.appendChild(playDiv);
+       
         // adds event listeners to player cards to trigger machine choice
         const userChoise = document.querySelectorAll('.playerCard');
         userChoise.forEach((card) => {
