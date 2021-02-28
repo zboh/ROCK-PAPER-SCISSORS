@@ -33,7 +33,7 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    color: khaki;
+    color: white;
     text-shadow: lavender 0 0 2px;
     font-family: 'Press Start 2P', cursive, sans-serif;
 } 
@@ -131,6 +131,7 @@ body {
 .handChoise {
     min-width: 130px;
     width: 180px;
+    height: 215px;
     font-size: 1rem;
     margin: 0.4rem;
 }
@@ -141,7 +142,7 @@ body {
     height: 50;
     font-size: 2rem;
     padding: 2vh;
-    text-shadow: 3px 3px 10px #e0ff99,
+    text-shadow: 2px 2px 5px #e0ff99,
     -2px 1px 10px #ff99cc;
 }
 
@@ -155,6 +156,6 @@ body {
 
 .score {
     text-shadow: 3px 4px 10px red;
-    font-size: 1.3rem;
+    font-size: 2rem;
 }
 /* END playing window */

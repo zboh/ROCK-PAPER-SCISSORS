@@ -57,7 +57,7 @@ function game (variantArr) {
     let playerScore = 0;
     let compScore = 0;
     let winPoints = 5;
-    let roundResult;
+    let singleRoundResult;
 
     while(playerScore < winPoints && compScore < winPoints) {
         let player = playerHand(variantArr);
@@ -66,8 +66,8 @@ function game (variantArr) {
             break;
         }
         let computer = computerHand(variantArr);
-        roundResult = singleRound(player, computer);
-        switch(roundResult) {
+        singleRoundResult = singleRound(player, computer);
+        switch(singleRoundResult) {
             case true:
                 playerScore++;
                 console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
