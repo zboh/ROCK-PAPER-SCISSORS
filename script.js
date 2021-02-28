@@ -3,7 +3,7 @@ const handVariants = ['rock', 'paper', 'scissors'];
 
 // escape value for player to break from game at any point
 // by clicking 'cancel' on prompt pop-up, or manually typing SENTINEL value
-const SENTINEL = -1;
+// const SENTINEL = -1;
 
 
 //  function to get user input
@@ -61,10 +61,10 @@ function game (variantArr) {
 
     while(playerScore < winPoints && compScore < winPoints) {
         let player = playerHand(variantArr);
-        if(player == SENTINEL) {
-            console.log('Chicken...');
-            break;
-        }
+        // if(player == SENTINEL) {
+        //     console.log('Chicken...');
+        //     break;
+        // }
         let computer = computerHand(variantArr);
         singleRoundResult = singleRound(player, computer);
         switch(singleRoundResult) {
