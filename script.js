@@ -1,3 +1,6 @@
+// This part of JS was created as a simplified version, to run game in console
+
+
 // Basic set of hand variants in this game
 const handVariants = ['rock', 'paper', 'scissors'];
 

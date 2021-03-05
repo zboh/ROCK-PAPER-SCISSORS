@@ -6,8 +6,8 @@ let initScore = 'You 0 : 0 AI';
 const playArea = document.querySelector('#playArea');
 let userHandName = '';
 let playerScore = 0;
-        let compScore = 0;
-        let winPoints = 5;
+let compScore = 0;
+let winPoints = 5;
 
 
 
@@ -66,7 +66,8 @@ roundResult.appendChild(whoWon);
 
 
 
-// create div to contain machine side of hand
+// create div to contain machine side of hand >>
+
 // function to generate comp hand variant
 function computerHand(variantArr) {
     let compChoise = Math.floor(Math.random() * Math.floor(variantArr.length));
@@ -131,7 +132,6 @@ function replay_click(clicked_id) {
     machineChoiceIndex = handVariants.indexOf(`${handVariants[randomizer]}`);
     let userChoiseIndex = handVariants.indexOf(userHandName);
     singleRoundResult = singleRound(userChoiseIndex, machineChoiceIndex);
-    // console.log(singleRoundResult);
     switch(singleRoundResult) {
         case true:
             console.log('player counter before ' + playerScore);
@@ -154,30 +154,30 @@ function replay_click(clicked_id) {
     };
 
     if (playerScore == winPoints) {
-        console.log('You WIN');
-        playBtn.textContent = 'YOU WON! Play Again?';
-        playDiv.style.display = 'none';
-        playBtn.style.display = 'block';
-        playerScore = 0;
-        compScore = 0;
-        initScore = `You ${playerScore} : ${compScore} AI`;
-        scorePar.innerText = initScore;
-
-        // reset machineCard content
+        playAreaReset('You');
         
     };
 
     if(compScore == winPoints) {
-        console.log('AI WIN');
-        playBtn.textContent = 'AI WON! Play Again?';
-        playDiv.style.display = 'none';
-        playBtn.style.display = 'block';
-        playerScore = 0;
-        compScore = 0;
-        initScore = `You ${playerScore} : ${compScore} AI`;
-        scorePar.innerText = initScore;
-        
+        playAreaReset('AI');   
     };
+
+}
+
+function playAreaReset(winner) {
+    console.log(`${winner} WON! PLAY AGAIN?`);
+    playBtn.textContent = `${winner} WON! PLAY AGAIN?`;
+    playDiv.style.display = 'none';
+    playBtn.style.display = 'block';
+    playerScore = 0;
+    compScore = 0;
+    initScore = `You ${playerScore} : ${compScore} AI`;
+    scorePar.innerText = initScore;
+    let machineTextReset = document.querySelector('.machineCard p');
+    machineTextReset.innerText = 'waitin...';
+    let machineImgReset = document.querySelector('.machineCard img');
+    machineImgReset.setAttribute('src', './img/question.png');
+    result.innerText = 'VS';
 
 }
 
@@ -209,8 +209,6 @@ function game() {
     playDiv.style.display = 'none';
     playBtn.addEventListener('click', () => {
         playBtn.style.display = 'none';
-        // initDiv.removeChild(playBtn); 
-        // initDiv.appendChild(playDiv);
         playDiv.style.display = 'block';
 
     });    
