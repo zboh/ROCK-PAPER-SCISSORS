@@ -5,8 +5,9 @@ let initBtnTxt = 'Play';
 let initScore = 'You 0 : 0 AI';
 const playArea = document.querySelector('#playArea');
 let userHandName = '';
-
-
+let playerScore = 0;
+        let compScore = 0;
+        let winPoints = 5;
 
 
 
@@ -76,6 +77,7 @@ function computerHand(variantArr) {
 const machineSide = document.createElement('div');
 machineSide.classList.add('d-flex', 'align-items-center', 'justify-content-center');
 const machineChoise = hand(`./img/question.png`, `waitin...`);
+machineChoise.removeAttribute('onClick');
 machineChoise.classList.add('machineCard');
 machineSide.appendChild(machineChoise);
 
@@ -119,6 +121,64 @@ function hand(imgSource, name) {
 
 function replay_click(clicked_id) {
     userHandName = clicked_id;
+
+    // 
+    let randomizer = computerHand(handVariants);
+    let machineCard = document.querySelector('.machineCard img');
+    let machineText = document.querySelector('.machineCard p');
+    machineCard.setAttribute('src', `./img/${handVariants[randomizer]}.png`);
+    machineText.innerText = `${handVariants[randomizer]}`;
+    machineChoiceIndex = handVariants.indexOf(`${handVariants[randomizer]}`);
+    let userChoiseIndex = handVariants.indexOf(userHandName);
+    singleRoundResult = singleRound(userChoiseIndex, machineChoiceIndex);
+    // console.log(singleRoundResult);
+    switch(singleRoundResult) {
+        case true:
+            console.log('player counter before ' + playerScore);
+            playerScore++;
+            console.log('player counter after ' + playerScore);
+            scorePar.innerText = `You ${playerScore} : ${compScore} AI`;
+            console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
+            break;
+        case false:
+            console.log('comp counter before ' + compScore);
+            compScore++;
+            console.log('comp counter after ' + compScore);
+            scorePar.innerText = `You ${playerScore} : ${compScore} AI`;
+            console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
+            break;
+        default:
+            scorePar.innerText = `You ${playerScore} : ${compScore} AI`;
+            console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
+            break;
+    };
+
+    if (playerScore == winPoints) {
+        console.log('You WIN');
+        playBtn.textContent = 'YOU WON! Play Again?';
+        playDiv.style.display = 'none';
+        playBtn.style.display = 'block';
+        playerScore = 0;
+        compScore = 0;
+        initScore = `You ${playerScore} : ${compScore} AI`;
+        scorePar.innerText = initScore;
+
+        // reset machineCard content
+        
+    };
+
+    if(compScore == winPoints) {
+        console.log('AI WIN');
+        playBtn.textContent = 'AI WON! Play Again?';
+        playDiv.style.display = 'none';
+        playBtn.style.display = 'block';
+        playerScore = 0;
+        compScore = 0;
+        initScore = `You ${playerScore} : ${compScore} AI`;
+        scorePar.innerText = initScore;
+        
+    };
+
 }
 
 function singleRound(playerSelection, computerSelection) {
@@ -144,8 +204,6 @@ function singleRound(playerSelection, computerSelection) {
 
 function game() {
 
-    let singleRoundResult;
-
     playArea.appendChild(initDiv);
     initDiv.appendChild(playDiv);
     playDiv.style.display = 'none';
@@ -154,77 +212,7 @@ function game() {
         // initDiv.removeChild(playBtn); 
         // initDiv.appendChild(playDiv);
         playDiv.style.display = 'block';
-        let playerScore = 0;
-        let compScore = 0;
-        let winPoints = 5;
 
-        // adds event listeners to player cards to trigger machine choice
-        const userChoise = document.querySelectorAll('.playerCard');
-        userChoise.forEach((card) => {
-
-            card.addEventListener('click', () => {
-
-                let randomizer = computerHand(handVariants);
-                let machineCard = document.querySelector('.machineCard img');
-                let machineText = document.querySelector('.machineCard p');
-                machineCard.setAttribute('src', `./img/${handVariants[randomizer]}.png`);
-                machineText.innerText = `${handVariants[randomizer]}`;
-                machineChoiceIndex = handVariants.indexOf(`${handVariants[randomizer]}`);
-                let userChoiseIndex = handVariants.indexOf(userHandName);
-                singleRoundResult = singleRound(userChoiseIndex, machineChoiceIndex);
-                // console.log(singleRoundResult);
-                switch(singleRoundResult) {
-                    case true:
-                        console.log('player counter before ' + playerScore);
-                        playerScore++;
-                        console.log('player counter after ' + playerScore);
-                        scorePar.innerText = `You ${playerScore} : ${compScore} AI`;
-                        console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
-                        break;
-                    case false:
-                        console.log('comp counter before ' + compScore);
-                        compScore++;
-                        console.log('comp counter after ' + compScore);
-                        scorePar.innerText = `You ${playerScore} : ${compScore} AI`;
-                        console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
-                        break;
-                    default:
-                        scorePar.innerText = `You ${playerScore} : ${compScore} AI`;
-                        console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
-                        break;
-                };
-
-                if (playerScore == winPoints) {
-                    console.log('You WIN');
-                    playBtn.textContent = 'YOU WON! Play Again?';
-                    playDiv.style.display = 'none';
-                    playBtn.style.display = 'block';
-                    // initDiv.removeChild(playDiv);
-                    // initDiv.appendChild(playBtn);
-                    playerScore = 0;
-                    compScore = 0;
-                    initScore = `You ${playerScore} : ${compScore} AI`;
-                    scorePar.innerText = initScore;
-                    
-                };
-    
-                if(compScore == winPoints) {
-                    console.log('AI WIN');
-                    playBtn.textContent = 'AI WON! Play Again?';
-                    playDiv.style.display = 'none';
-                    playBtn.style.display = 'block';
-                    // initDiv.removeChild(playDiv);
-                    // initDiv.appendChild(playBtn);
-                    playerScore = 0;
-                    compScore = 0;
-                    initScore = `You ${playerScore} : ${compScore} AI`;
-                    scorePar.innerText = initScore;
-                    
-                };
-            
-            });
-            
-        });
     });    
 };
 
