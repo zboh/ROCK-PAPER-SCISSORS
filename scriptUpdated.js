@@ -8,6 +8,7 @@ let userHandName = '';
 let playerScore = 0;
 let compScore = 0;
 let winPoints = 5;
+let attemps = 0;
 
 
 
@@ -79,7 +80,8 @@ const machineSide = document.createElement('div');
 machineSide.classList.add('d-flex', 'align-items-center', 'justify-content-center');
 const machineChoise = hand(`./img/question.png`, `waitin...`);
 machineChoise.removeAttribute('onClick');
-machineChoise.classList.add('machineCard');
+machineChoise.classList.remove('glow-on-hover', 'play-btn');
+machineChoise.classList.add('machineCard', 'machineBtn');
 machineSide.appendChild(machineChoise);
 
 
@@ -123,7 +125,6 @@ function hand(imgSource, name) {
 function replay_click(clicked_id) {
     userHandName = clicked_id;
 
-    // 
     let randomizer = computerHand(handVariants);
     let machineCard = document.querySelector('.machineCard img');
     let machineText = document.querySelector('.machineCard p');
@@ -134,22 +135,22 @@ function replay_click(clicked_id) {
     singleRoundResult = singleRound(userChoiseIndex, machineChoiceIndex);
     switch(singleRoundResult) {
         case true:
-            console.log('player counter before ' + playerScore);
+            // console.log('player counter before ' + playerScore);
             playerScore++;
-            console.log('player counter after ' + playerScore);
+            // console.log('player counter after ' + playerScore);
             scorePar.innerText = `You ${playerScore} : ${compScore} AI`;
-            console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
+            // console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
             break;
         case false:
-            console.log('comp counter before ' + compScore);
+            // console.log('comp counter before ' + compScore);
             compScore++;
-            console.log('comp counter after ' + compScore);
+            // console.log('comp counter after ' + compScore);
             scorePar.innerText = `You ${playerScore} : ${compScore} AI`;
-            console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
+            // console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
             break;
         default:
             scorePar.innerText = `You ${playerScore} : ${compScore} AI`;
-            console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
+            // console.log(`The score is Player ${ playerScore } - ${ compScore } Computer`);
             break;
     };
 
@@ -165,12 +166,13 @@ function replay_click(clicked_id) {
 }
 
 function playAreaReset(winner) {
-    console.log(`${winner} WON! PLAY AGAIN?`);
+    // console.log(`${winner} WON! PLAY AGAIN?`);
     playBtn.textContent = `${winner} WON! PLAY AGAIN?`;
     playDiv.style.display = 'none';
     playBtn.style.display = 'block';
     playerScore = 0;
     compScore = 0;
+    attemps = 0;
     initScore = `You ${playerScore} : ${compScore} AI`;
     scorePar.innerText = initScore;
     let machineTextReset = document.querySelector('.machineCard p');
@@ -178,24 +180,31 @@ function playAreaReset(winner) {
     let machineImgReset = document.querySelector('.machineCard img');
     machineImgReset.setAttribute('src', './img/question.png');
     result.innerText = 'VS';
-
 }
 
 function singleRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        result.innerText = 'It\'s a tie.';
+        attemps++;
+        result.innerText = `Attempt ${attemps}: Tie`;
         return NaN;
     }else if (playerSelection === 2 && computerSelection === 0){
-        result.innerText = 'You lose...';
+        
+        attemps++;
+        result.innerText = `Attempt ${attemps}: LOSE`;
         return false;
     }else if (playerSelection === 0 && computerSelection === 2){
-        result.innerText = 'You won!';
+        
+        attemps++;
+        result.innerText = `Attempt ${attemps}: WIN`;
         return true;
     } else if (playerSelection > computerSelection){
-        result.innerText = 'You won!';
+        
+        attemps++;
+        result.innerText = `Attempt ${attemps}: WIN`;
         return true;
     }else{
-        result.innerText = 'You lose...';
+        attemps++;
+        result.innerText = `Attempt ${attemps}: LOSE`;
         return false;
     }
 }
