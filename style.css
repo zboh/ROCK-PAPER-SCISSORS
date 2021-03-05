@@ -5,6 +5,18 @@ html {
     font-size: 16px;
     font-family: 'Press Start 2P', cursive, sans-serif;
   }
+
+@media only screen and (max-width: 600px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 321px) {
+    html {
+        font-size: 8px;
+    }
+}
   
   *, *:before, *:after {
     box-sizing: inherit;
@@ -84,7 +96,7 @@ body {
     animation: glowing 20s linear infinite;
     opacity: 0;
     transition: opacity .3s ease-in-out;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 }
 
 .glow-on-hover:active {
@@ -108,7 +120,7 @@ body {
     background: #111;
     left: 0;
     top: 0;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 }
 
 @keyframes glowing {
@@ -124,29 +136,18 @@ body {
     height: 80vh;
 }
 
-/* .playerSide, 
-.machineSide,
-.score {
-    padding-left: 15vw;
-} */
-
-/* @media only screen and (max-width: 991px) {
-     {padding-left: 15vw;}
-    .score{text-align: center;}
-} */
 
 .handChoise {
-    min-width: 130px;
-    width: 180px;
-    height: 215px;
+    min-width: 8.125rem;
+    width: 11.25rem;
+    height: 13.45rem;
     font-size: 1rem;
     margin: 0.6rem;
 }
 
 
 .whoWon {
-    width: 50vw;
-    height: 50;
+    /* height: 50; */
     font-size: 2rem;
     padding: 2vh;
     text-shadow: 2px 2px 5px #e0ff99,
@@ -154,7 +155,7 @@ body {
 }
 
 .compHand {
-    min-height: 200px;
+    min-height: 12.5rem;
 }
 
 .compText {
