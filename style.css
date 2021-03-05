@@ -42,7 +42,7 @@ html {
 body {
     background: url('./img/10981844.jpg') no-repeat bottom center;
     background-size: cover;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
     padding: 0;
     color: white;

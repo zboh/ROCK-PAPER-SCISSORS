@@ -87,7 +87,7 @@ machineSide.appendChild(machineChoise);
 
 // create score board on bottom of player-machine divs
 const score = document.createElement('div');
-score.classList.add('text-center', 'score', 'p-5');
+score.classList.add('text-center', 'score', 'pt-5');
 const scorePar = document.createElement('p');
 scorePar.innerText = initScore;
 score.appendChild(scorePar);
