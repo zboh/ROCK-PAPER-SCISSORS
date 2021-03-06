@@ -6,6 +6,30 @@ html {
     font-family: 'Press Start 2P', cursive, sans-serif;
   }
 
+  @media only screen and (max-height: 800px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    html {
+        font-size: 12px;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     html {
         font-size: 10px;
@@ -17,6 +41,10 @@ html {
         font-size: 8px;
     }
 }
+
+
+
+
   
   *, *:before, *:after {
     box-sizing: inherit;
@@ -43,6 +71,7 @@ html {
 body {
     background: url('./img/10981844.jpg') no-repeat bottom center;
     background-size: cover;
+    width: 100vw;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -80,6 +109,7 @@ body {
 
 .gameInit {
     height: 100vh;   
+    padding: 3rem 0;
 }
 
 .glow-on-hover {
@@ -152,7 +182,7 @@ body {
 .handChoise {
     min-width: 8.125rem;
     width: 11.25rem;
-    height: 13.45rem;
+    height: auto;
     font-size: 1rem;
     margin: 0.6rem;
 }
